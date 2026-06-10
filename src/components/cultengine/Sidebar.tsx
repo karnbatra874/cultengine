@@ -1,11 +1,12 @@
+import { Link } from "@tanstack/react-router";
 import { NAV_SECTIONS } from "@/lib/cultengine-data";
+import { idToPath } from "@/lib/cultengine-nav";
 
 interface Props {
   activePage: string;
-  onNav: (page: string) => void;
 }
 
-export function Sidebar({ activePage, onNav }: Props) {
+export function Sidebar({ activePage }: Props) {
   return (
     <div className="sidebar">
       <div className="sb-brand">
@@ -20,10 +21,10 @@ export function Sidebar({ activePage, onNav }: Props) {
           <div key={section.label}>
             <div className="sb-section">{section.label}</div>
             {section.items.map((item) => (
-              <button
+              <Link
                 key={item.id}
+                to={idToPath(item.id)}
                 className={`sb-item ${activePage === item.id ? "active" : ""}`}
-                onClick={() => onNav(item.id)}
               >
                 <i className={`ti ${item.icon}`} aria-hidden="true" />
                 {item.label}
@@ -35,7 +36,7 @@ export function Sidebar({ activePage, onNav }: Props) {
                     {item.badge}
                   </span>
                 )}
-              </button>
+              </Link>
             ))}
           </div>
         ))}
