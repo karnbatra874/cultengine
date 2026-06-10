@@ -27,10 +27,10 @@ export function Sidebar({ activePage, onNav }: Props) {
               >
                 <i className={`ti ${item.icon}`} aria-hidden="true" />
                 {item.label}
-                {item.badge && (
+                {"badge" in item && item.badge && (
                   <span
                     className="sb-badge"
-                    style={item.badgeColor ? { background: item.badgeColor } : undefined}
+                    style={"badgeColor" in item && item.badgeColor ? { background: item.badgeColor as string } : undefined}
                   >
                     {item.badge}
                   </span>

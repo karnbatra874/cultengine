@@ -17,7 +17,7 @@ import { CouncilPage } from "./pages/CouncilPage";
 import { SettingsPage } from "./pages/SettingsPage";
 import { MVPPage } from "./pages/MVPPage";
 
-const PAGES: Record<string, () => JSX.Element> = {
+const PAGES: Record<string, React.ComponentType> = {
   dashboard: DashboardPage,
   members: MembersPage,
   clubs: ClubsPage,
