@@ -10,32 +10,140 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/_app'
+import { Route as AppIndexRouteImport } from './routes/_app.index'
+import { Route as AppTasksRouteImport } from './routes/_app.tasks'
+import { Route as AppSettingsRouteImport } from './routes/_app.settings'
+import { Route as AppCouncilRouteImport } from './routes/_app.council'
+import { Route as AppContingentRouteImport } from './routes/_app.contingent'
+import { Route as AppClubsRouteImport } from './routes/_app.clubs'
+import { Route as AppCalendarRouteImport } from './routes/_app.calendar'
+import { Route as AppAuditionsRouteImport } from './routes/_app.auditions'
+import { Route as AppAnalyticsRouteImport } from './routes/_app.analytics'
 
 const AppRoute = AppRouteImport.update({
   id: '/_app',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTasksRoute = AppTasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCouncilRoute = AppCouncilRouteImport.update({
+  id: '/council',
+  path: '/council',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppContingentRoute = AppContingentRouteImport.update({
+  id: '/contingent',
+  path: '/contingent',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppClubsRoute = AppClubsRouteImport.update({
+  id: '/clubs',
+  path: '/clubs',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCalendarRoute = AppCalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAuditionsRoute = AppAuditionsRouteImport.update({
+  id: '/auditions',
+  path: '/auditions',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof AppRoute
+  '/': typeof AppIndexRoute
+  '/analytics': typeof AppAnalyticsRoute
+  '/auditions': typeof AppAuditionsRoute
+  '/calendar': typeof AppCalendarRoute
+  '/clubs': typeof AppClubsRoute
+  '/contingent': typeof AppContingentRoute
+  '/council': typeof AppCouncilRoute
+  '/settings': typeof AppSettingsRoute
+  '/tasks': typeof AppTasksRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof AppRoute
+  '/analytics': typeof AppAnalyticsRoute
+  '/auditions': typeof AppAuditionsRoute
+  '/calendar': typeof AppCalendarRoute
+  '/clubs': typeof AppClubsRoute
+  '/contingent': typeof AppContingentRoute
+  '/council': typeof AppCouncilRoute
+  '/settings': typeof AppSettingsRoute
+  '/tasks': typeof AppTasksRoute
+  '/': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_app': typeof AppRoute
+  '/_app': typeof AppRouteWithChildren
+  '/_app/analytics': typeof AppAnalyticsRoute
+  '/_app/auditions': typeof AppAuditionsRoute
+  '/_app/calendar': typeof AppCalendarRoute
+  '/_app/clubs': typeof AppClubsRoute
+  '/_app/contingent': typeof AppContingentRoute
+  '/_app/council': typeof AppCouncilRoute
+  '/_app/settings': typeof AppSettingsRoute
+  '/_app/tasks': typeof AppTasksRoute
+  '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/auditions'
+    | '/calendar'
+    | '/clubs'
+    | '/contingent'
+    | '/council'
+    | '/settings'
+    | '/tasks'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/_app'
+  to:
+    | '/analytics'
+    | '/auditions'
+    | '/calendar'
+    | '/clubs'
+    | '/contingent'
+    | '/council'
+    | '/settings'
+    | '/tasks'
+    | '/'
+  id:
+    | '__root__'
+    | '/_app'
+    | '/_app/analytics'
+    | '/_app/auditions'
+    | '/_app/calendar'
+    | '/_app/clubs'
+    | '/_app/contingent'
+    | '/_app/council'
+    | '/_app/settings'
+    | '/_app/tasks'
+    | '/_app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  AppRoute: typeof AppRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -47,11 +155,100 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/': {
+      id: '/_app/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/tasks': {
+      id: '/_app/tasks'
+      path: '/tasks'
+      fullPath: '/tasks'
+      preLoaderRoute: typeof AppTasksRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/settings': {
+      id: '/_app/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/council': {
+      id: '/_app/council'
+      path: '/council'
+      fullPath: '/council'
+      preLoaderRoute: typeof AppCouncilRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/contingent': {
+      id: '/_app/contingent'
+      path: '/contingent'
+      fullPath: '/contingent'
+      preLoaderRoute: typeof AppContingentRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/clubs': {
+      id: '/_app/clubs'
+      path: '/clubs'
+      fullPath: '/clubs'
+      preLoaderRoute: typeof AppClubsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/calendar': {
+      id: '/_app/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof AppCalendarRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/auditions': {
+      id: '/_app/auditions'
+      path: '/auditions'
+      fullPath: '/auditions'
+      preLoaderRoute: typeof AppAuditionsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/analytics': {
+      id: '/_app/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AppAnalyticsRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppAnalyticsRoute: typeof AppAnalyticsRoute
+  AppAuditionsRoute: typeof AppAuditionsRoute
+  AppCalendarRoute: typeof AppCalendarRoute
+  AppClubsRoute: typeof AppClubsRoute
+  AppContingentRoute: typeof AppContingentRoute
+  AppCouncilRoute: typeof AppCouncilRoute
+  AppSettingsRoute: typeof AppSettingsRoute
+  AppTasksRoute: typeof AppTasksRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAnalyticsRoute: AppAnalyticsRoute,
+  AppAuditionsRoute: AppAuditionsRoute,
+  AppCalendarRoute: AppCalendarRoute,
+  AppClubsRoute: AppClubsRoute,
+  AppContingentRoute: AppContingentRoute,
+  AppCouncilRoute: AppCouncilRoute,
+  AppSettingsRoute: AppSettingsRoute,
+  AppTasksRoute: AppTasksRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  AppRoute: AppRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
