@@ -74,12 +74,56 @@ export function AuditionsPage() {
     <div className="page">
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
         <div style={{ fontSize: 15, fontWeight: 500 }}>Audition portal</div>
-        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <span className="pill p-act">Orientation week open</span>
-          <button className="btn btn-p" onClick={() => setOpen(true)}>
-            <i className="ti ti-send" style={{ fontSize: 14 }} />Submit audition
-          </button>
+        <span className="pill p-act">Orientation week open</span>
+      </div>
+
+      <div
+        onClick={() => setOpen(true)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") setOpen(true); }}
+        style={{
+          background: "linear-gradient(135deg, #534AB7 0%, #6B5FD8 100%)",
+          borderRadius: "var(--border-radius-lg)",
+          padding: "22px 24px",
+          marginBottom: 14,
+          cursor: "pointer",
+          color: "#fff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 16,
+          boxShadow: "0 4px 14px rgba(83, 74, 183, 0.25)",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <div style={{
+            width: 48, height: 48, borderRadius: 12,
+            background: "rgba(255,255,255,0.18)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 24,
+          }}>
+            <i className="ti ti-send" />
+          </div>
+          <div>
+            <div style={{ fontSize: 17, fontWeight: 600, marginBottom: 2 }}>
+              Submit your audition
+            </div>
+            <div style={{ fontSize: 12, opacity: 0.85 }}>
+              Upload a 60-sec clip · Blind reviewed · MP4, MP3, or PDF portfolio
+            </div>
+          </div>
         </div>
+        <button
+          className="btn"
+          onClick={(e) => { e.stopPropagation(); setOpen(true); }}
+          style={{
+            background: "#fff", color: "#534AB7", fontWeight: 600,
+            padding: "10px 18px", fontSize: 13, border: "none",
+          }}
+        >
+          Start submission <i className="ti ti-arrow-right" style={{ fontSize: 14 }} />
+        </button>
       </div>
       <div className="metrics">
         <div className="metric"><div className="metric-val">{214 + (queue.length - REVIEW_QUEUE.length)}</div><div className="metric-lbl">Submissions</div></div>
