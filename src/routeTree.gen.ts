@@ -11,13 +11,18 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as AppIndexRouteImport } from './routes/_app.index'
+import { Route as AppVaultRouteImport } from './routes/_app.vault'
 import { Route as AppTasksRouteImport } from './routes/_app.tasks'
 import { Route as AppSettingsRouteImport } from './routes/_app.settings'
+import { Route as AppMvpRouteImport } from './routes/_app.mvp'
+import { Route as AppMembersRouteImport } from './routes/_app.members'
 import { Route as AppCouncilRouteImport } from './routes/_app.council'
 import { Route as AppContingentRouteImport } from './routes/_app.contingent'
 import { Route as AppClubsRouteImport } from './routes/_app.clubs'
 import { Route as AppCalendarRouteImport } from './routes/_app.calendar'
 import { Route as AppAuditionsRouteImport } from './routes/_app.auditions'
+import { Route as AppAssetsRouteImport } from './routes/_app.assets'
+import { Route as AppAnnouncementsRouteImport } from './routes/_app.announcements'
 import { Route as AppAnalyticsRouteImport } from './routes/_app.analytics'
 
 const AppRoute = AppRouteImport.update({
@@ -29,6 +34,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppVaultRoute = AppVaultRouteImport.update({
+  id: '/vault',
+  path: '/vault',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppTasksRoute = AppTasksRouteImport.update({
   id: '/tasks',
   path: '/tasks',
@@ -37,6 +47,16 @@ const AppTasksRoute = AppTasksRouteImport.update({
 const AppSettingsRoute = AppSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppMvpRoute = AppMvpRouteImport.update({
+  id: '/mvp',
+  path: '/mvp',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppMembersRoute = AppMembersRouteImport.update({
+  id: '/members',
+  path: '/members',
   getParentRoute: () => AppRoute,
 } as any)
 const AppCouncilRoute = AppCouncilRouteImport.update({
@@ -64,6 +84,16 @@ const AppAuditionsRoute = AppAuditionsRouteImport.update({
   path: '/auditions',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAssetsRoute = AppAssetsRouteImport.update({
+  id: '/assets',
+  path: '/assets',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAnnouncementsRoute = AppAnnouncementsRouteImport.update({
+  id: '/announcements',
+  path: '/announcements',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
   id: '/analytics',
   path: '/analytics',
@@ -73,36 +103,51 @@ const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof AppIndexRoute
   '/analytics': typeof AppAnalyticsRoute
+  '/announcements': typeof AppAnnouncementsRoute
+  '/assets': typeof AppAssetsRoute
   '/auditions': typeof AppAuditionsRoute
   '/calendar': typeof AppCalendarRoute
   '/clubs': typeof AppClubsRoute
   '/contingent': typeof AppContingentRoute
   '/council': typeof AppCouncilRoute
+  '/members': typeof AppMembersRoute
+  '/mvp': typeof AppMvpRoute
   '/settings': typeof AppSettingsRoute
   '/tasks': typeof AppTasksRoute
+  '/vault': typeof AppVaultRoute
 }
 export interface FileRoutesByTo {
   '/analytics': typeof AppAnalyticsRoute
+  '/announcements': typeof AppAnnouncementsRoute
+  '/assets': typeof AppAssetsRoute
   '/auditions': typeof AppAuditionsRoute
   '/calendar': typeof AppCalendarRoute
   '/clubs': typeof AppClubsRoute
   '/contingent': typeof AppContingentRoute
   '/council': typeof AppCouncilRoute
+  '/members': typeof AppMembersRoute
+  '/mvp': typeof AppMvpRoute
   '/settings': typeof AppSettingsRoute
   '/tasks': typeof AppTasksRoute
+  '/vault': typeof AppVaultRoute
   '/': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_app': typeof AppRouteWithChildren
   '/_app/analytics': typeof AppAnalyticsRoute
+  '/_app/announcements': typeof AppAnnouncementsRoute
+  '/_app/assets': typeof AppAssetsRoute
   '/_app/auditions': typeof AppAuditionsRoute
   '/_app/calendar': typeof AppCalendarRoute
   '/_app/clubs': typeof AppClubsRoute
   '/_app/contingent': typeof AppContingentRoute
   '/_app/council': typeof AppCouncilRoute
+  '/_app/members': typeof AppMembersRoute
+  '/_app/mvp': typeof AppMvpRoute
   '/_app/settings': typeof AppSettingsRoute
   '/_app/tasks': typeof AppTasksRoute
+  '/_app/vault': typeof AppVaultRoute
   '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
@@ -110,35 +155,50 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/analytics'
+    | '/announcements'
+    | '/assets'
     | '/auditions'
     | '/calendar'
     | '/clubs'
     | '/contingent'
     | '/council'
+    | '/members'
+    | '/mvp'
     | '/settings'
     | '/tasks'
+    | '/vault'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/analytics'
+    | '/announcements'
+    | '/assets'
     | '/auditions'
     | '/calendar'
     | '/clubs'
     | '/contingent'
     | '/council'
+    | '/members'
+    | '/mvp'
     | '/settings'
     | '/tasks'
+    | '/vault'
     | '/'
   id:
     | '__root__'
     | '/_app'
     | '/_app/analytics'
+    | '/_app/announcements'
+    | '/_app/assets'
     | '/_app/auditions'
     | '/_app/calendar'
     | '/_app/clubs'
     | '/_app/contingent'
     | '/_app/council'
+    | '/_app/members'
+    | '/_app/mvp'
     | '/_app/settings'
     | '/_app/tasks'
+    | '/_app/vault'
     | '/_app/'
   fileRoutesById: FileRoutesById
 }
@@ -162,6 +222,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/vault': {
+      id: '/_app/vault'
+      path: '/vault'
+      fullPath: '/vault'
+      preLoaderRoute: typeof AppVaultRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/tasks': {
       id: '/_app/tasks'
       path: '/tasks'
@@ -174,6 +241,20 @@ declare module '@tanstack/react-router' {
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/mvp': {
+      id: '/_app/mvp'
+      path: '/mvp'
+      fullPath: '/mvp'
+      preLoaderRoute: typeof AppMvpRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/members': {
+      id: '/_app/members'
+      path: '/members'
+      fullPath: '/members'
+      preLoaderRoute: typeof AppMembersRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/council': {
@@ -211,6 +292,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAuditionsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/assets': {
+      id: '/_app/assets'
+      path: '/assets'
+      fullPath: '/assets'
+      preLoaderRoute: typeof AppAssetsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/announcements': {
+      id: '/_app/announcements'
+      path: '/announcements'
+      fullPath: '/announcements'
+      preLoaderRoute: typeof AppAnnouncementsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/analytics': {
       id: '/_app/analytics'
       path: '/analytics'
@@ -223,25 +318,35 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppAnalyticsRoute: typeof AppAnalyticsRoute
+  AppAnnouncementsRoute: typeof AppAnnouncementsRoute
+  AppAssetsRoute: typeof AppAssetsRoute
   AppAuditionsRoute: typeof AppAuditionsRoute
   AppCalendarRoute: typeof AppCalendarRoute
   AppClubsRoute: typeof AppClubsRoute
   AppContingentRoute: typeof AppContingentRoute
   AppCouncilRoute: typeof AppCouncilRoute
+  AppMembersRoute: typeof AppMembersRoute
+  AppMvpRoute: typeof AppMvpRoute
   AppSettingsRoute: typeof AppSettingsRoute
   AppTasksRoute: typeof AppTasksRoute
+  AppVaultRoute: typeof AppVaultRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppAnalyticsRoute: AppAnalyticsRoute,
+  AppAnnouncementsRoute: AppAnnouncementsRoute,
+  AppAssetsRoute: AppAssetsRoute,
   AppAuditionsRoute: AppAuditionsRoute,
   AppCalendarRoute: AppCalendarRoute,
   AppClubsRoute: AppClubsRoute,
   AppContingentRoute: AppContingentRoute,
   AppCouncilRoute: AppCouncilRoute,
+  AppMembersRoute: AppMembersRoute,
+  AppMvpRoute: AppMvpRoute,
   AppSettingsRoute: AppSettingsRoute,
   AppTasksRoute: AppTasksRoute,
+  AppVaultRoute: AppVaultRoute,
   AppIndexRoute: AppIndexRoute,
 }
 
