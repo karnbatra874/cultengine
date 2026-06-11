@@ -1,0 +1,1 @@
+CultEngine is a centralized cultural talent-management and institutional-memory platform that tracks a student from first audition all the way to Inter-IIT representation while preserving cultural knowledge across generations of student leadership
