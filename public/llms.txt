@@ -1,0 +1,25 @@
+# CultEngine
+
+> Unified cultural club management platform for IIT Roorkee — auditions, members, contingent selection, analytics and events across 13 clubs.
+
+CultEngine helps the Cultural Council and club leads run auditions, track talent with a Contingent Selection Score (CSS), build inter-college contingents, manage assets, and coordinate events from one workspace.
+
+## Pages
+
+- [Dashboard](/): Overview of club health, activity, audition funnel and upcoming events.
+- [Members](/members): Roster of cultural members across all 13 clubs.
+- [Clubs](/clubs): Directory of the 13 cultural clubs with health and leadership.
+- [Council](/council): Cultural Council leadership.
+- [Auditions](/auditions): Audition submissions and applicant tracking.
+- [Contingent](/contingent): CSS-based contingent builder for inter-college events.
+- [Analytics](/analytics): CSS calculator, club performance index and section health.
+- [MVPs](/mvp): Standout cultural performers.
+- [Calendar](/calendar): Cultural events, rehearsals and audition schedule.
+- [Announcements](/announcements): Broadcasts across clubs.
+- [Assets](/assets): Shared file vault for clubs.
+- [Tasks](/tasks): Kanban tracker for cultural operations.
+
+## Optional
+
+- [Vault](/vault): Archive of records and institutional memory.
+- [Settings](/settings): Workspace configuration.
