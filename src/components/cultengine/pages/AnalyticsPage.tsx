@@ -77,10 +77,11 @@ export function AnalyticsPage() {
 }
 
 function Slider({ label, value, onChange }: { label: string; value: number; onChange: (v: number) => void }) {
+  const id = "slider-" + label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   return (
     <div className="form-row">
-      <label className="form-lbl">{label} — <span>{value.toFixed(2)}</span></label>
-      <input type="range" min={0} max={1} step={0.01} value={value} onChange={(e) => onChange(parseFloat(e.target.value))} style={{ width: "100%" }} />
+      <label className="form-lbl" htmlFor={id}>{label} — <span>{value.toFixed(2)}</span></label>
+      <input id={id} type="range" min={0} max={1} step={0.01} value={value} onChange={(e) => onChange(parseFloat(e.target.value))} style={{ width: "100%" }} aria-label={label} />
     </div>
   );
 }

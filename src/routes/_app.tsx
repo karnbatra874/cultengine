@@ -17,15 +17,14 @@ function AppLayout() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const activeId = pathToId(pathname);
   return (
-    <>
-      <h2 className="sr-only">CultEngine — IIT Roorkee unified cultural management platform</h2>
-      <div className="app">
-        <Sidebar activePage={activeId} />
-        <div className="main">
-          <Topbar title={PAGE_TITLES[activeId] ?? activeId} />
+    <div className="app">
+      <Sidebar activePage={activeId} />
+      <div className="main">
+        <Topbar title={PAGE_TITLES[activeId] ?? activeId} />
+        <main>
           <Outlet />
-        </div>
+        </main>
       </div>
-    </>
+    </div>
   );
 }
