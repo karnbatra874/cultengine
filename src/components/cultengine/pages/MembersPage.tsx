@@ -71,7 +71,21 @@ export function MembersPage() {
           </div>
         </div>
         <div style={{ display: "flex", gap: 8 }}>
-          <button className="btn"><i className="ti ti-download" style={{ fontSize: 14 }} />Export</button>
+          <button className="btn" onClick={() => {
+            const header = ["Name", "Roll no.", "Branch", "Club", "Year", "CSS", "Status"];
+            const csv = [header.join(","), ...rows.map(m => [
+              `"${m.name}"`, m.roll, `"${m.branch}"`, `"${m.club}"`, m.year, m.css, m.status
+            ].join(","))].join("\n");
+            const blob = new Blob([csv], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "members.csv";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+          }}><i className="ti ti-download" style={{ fontSize: 14 }} />Export</button>
           <button className="btn btn-p" onClick={() => setOpen(true)}>
             <i className="ti ti-plus" style={{ fontSize: 14 }} />Add member
           </button>
