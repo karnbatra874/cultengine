@@ -146,47 +146,47 @@ export function MembersPage() {
           </DialogHeader>
           <form onSubmit={submit}>
             <div className="form-row">
-              <label className="form-lbl">Full name</label>
-              <input className="form-in" value={form.name}
+              <label className="form-lbl" htmlFor="m-name">Full name</label>
+              <input id="m-name" className="form-in" value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder="e.g. Karan Batra" required />
             </div>
             <div className="form-row">
-              <label className="form-lbl">Roll number</label>
-              <input className="form-in" value={form.roll}
+              <label className="form-lbl" htmlFor="m-roll">Roll number</label>
+              <input id="m-roll" className="form-in" value={form.roll}
                 onChange={(e) => setForm({ ...form, roll: e.target.value })}
                 placeholder="e.g. 24116044" required />
             </div>
             <div className="form-row">
-              <label className="form-lbl">Branch</label>
-              <select className="form-in" value={form.branch}
+              <label className="form-lbl" htmlFor="m-branch">Branch</label>
+              <select id="m-branch" className="form-in" value={form.branch}
                 onChange={(e) => setForm({ ...form, branch: e.target.value })}>
                 {BRANCHES.map((b) => <option key={b}>{b}</option>)}
               </select>
             </div>
             <div className="form-row">
-              <label className="form-lbl">Club</label>
-              <select className="form-in" value={form.club}
+              <label className="form-lbl" htmlFor="m-club">Club</label>
+              <select id="m-club" className="form-in" value={form.club}
                 onChange={(e) => setForm({ ...form, club: e.target.value })}>
                 {CLUBS.map((c) => <option key={c.id}>{c.name}</option>)}
               </select>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
               <div className="form-row">
-                <label className="form-lbl">Year</label>
-                <select className="form-in" value={form.year}
+                <label className="form-lbl" htmlFor="m-year">Year</label>
+                <select id="m-year" className="form-in" value={form.year}
                   onChange={(e) => setForm({ ...form, year: e.target.value })}>
                   <option>1st</option><option>2nd</option><option>3rd</option><option>4th</option>
                 </select>
               </div>
               <div className="form-row">
-                <label className="form-lbl">CSS</label>
-                <input className="form-in" type="number" min={0} max={100} value={form.css}
+                <label className="form-lbl" htmlFor="m-css">CSS</label>
+                <input id="m-css" className="form-in" type="number" min={0} max={100} value={form.css}
                   onChange={(e) => setForm({ ...form, css: e.target.value })} placeholder="0" />
               </div>
               <div className="form-row">
-                <label className="form-lbl">Status</label>
-                <select className="form-in" value={form.status}
+                <label className="form-lbl" htmlFor="m-status">Status</label>
+                <select id="m-status" className="form-in" value={form.status}
                   onChange={(e) => setForm({ ...form, status: e.target.value as Member["status"] })}>
                   <option value="new">new</option>
                   <option value="review">review</option>
